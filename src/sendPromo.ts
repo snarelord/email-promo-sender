@@ -1,8 +1,3 @@
-// read list of recipient emails
-// use dropbox link in composed email
-// log emails to avoid resending
-// send using via SMTP using nodemailer
-
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import fs from "fs";
@@ -20,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
 // get dropbox link and subject from command line arguments
 const dropboxLink = process.argv[2];
-const subject = process.argv[3];
+const subject = process.argv[3] || "New Circumference music!";
 
 // email options for each recipient
 const options = {
