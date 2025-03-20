@@ -1,0 +1,25 @@
+{
+  "name": "email-promo-sender",
+  "version": "1.0.0",
+  "description": "A simple node application to send music promo to DJ's. Creating to make my life easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snarelord/email-promo-sender.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/snarelord/email-promo-sender/issues"
+  },
+  "homepage": "https://github.com/snarelord/email-promo-sender#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "nodemailer": "^6.10.0"
+  }
+}
