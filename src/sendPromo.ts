@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
 // get dropbox link and subject from command line arguments
 const dropboxLink = process.argv[2];
-const subject = process.argv[3] || "New Circumference music!";
+const subject = process.argv[3] || "New music!";
 
 // email options for each recipient
 const options = {
