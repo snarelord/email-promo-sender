@@ -1,6 +1,6 @@
-import nodemailer from "nodemailer";
-import dotenv from "dotenv";
-import fs from "fs";
+import * as nodemailer from "nodemailer";
+import * as dotenv from "dotenv";
+import * as fs from "fs";
 
 dotenv.config();
 
@@ -25,9 +25,15 @@ const options = {
 };
 
 // send email to each recipient
-recipients.forEach((recipient: string) => {
-  transporter
-    .sendMail({ ...options, to: recipient })
-    .then((info) => console.log(`Email sent to ${recipient}: ${info.response}`))
-    .catch((error) => console.error(`Error sending email to ${recipient}:`, error));
-});
+async function sendEmails() {
+  for (const recipient of recipients) {
+    try {
+      const info = await transporter.sendMail({ ...options, to: recipient });
+      console.log(`Email sent to ${recipient}: ${info.response}`);
+    } catch (error) {
+      console.error(`Error sending email to ${recipient}:`, error);
+    }
+  }
+}
+
+sendEmails();
