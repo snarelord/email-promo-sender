@@ -45,6 +45,16 @@ A Node.js application to email music promo to DJs. The app reads email addresses
       ]
     }
     ```
+6. Edit the `options` object's text property to reflect your own message:
+    ```js
+    // email options for each recipient
+     const options = {
+      from: process.env.EMAIL_USER,
+      subject: subject,
+      text: `New Circumference music! ${dropboxLink}`,
+   };
+    ```
+
 
 ## Usage
 
