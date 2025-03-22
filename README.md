@@ -3,67 +3,68 @@
 A Node.js application to email music promo to DJs. The app reads email addresses from a `recipients.json` file and sends an email to each recipient with a specified link to music hosted on Dropbox. This was created to make my life easier.
 
 ## Features
+
 - Send personalised emails to multiple recipients.
 - Reads email addresses from a `recipients.json` file.
 - Supports sending music promo links via Dropbox.
 - Uses `nodemailer` to send emails via Gmail's SMTP server.
 
 ## Prerequisites
+
 - Node.js (v14 or above)
 - Gmail account for sending emails
 
 ## Installation
 
 1. Clone this repository:
-    ```bash
-    git clone https://github.com/snarelord/email-promo-sender.git
-    ```
+
+   ```bash
+   git clone https://github.com/snarelord/email-promo-sender.git
+   ```
 
 2. Navigate to the project directory:
-    ```bash
-    cd email-promo-sender
-    ```
+
+   ```bash
+   cd email-promo-sender
+   ```
 
 3. Install the dependencies:
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 4. Create a `.env` file in the root of the project directory and add your Gmail credentials:
-    ```env
-    EMAIL_USER=your-email@gmail.com
-    EMAIL_PASS=your-app-password
-    ```
+
+   ```env
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-app-password
+   ```
 
 5. Create a `recipients.json` file in the root directory with a list of email addresses:
-    ```json
-    {
-      "recipients": [
-        "email1@example.com",
-        "email2@example.com",
-        "email3@example.com"
-      ]
-    }
-    ```
+   ```json
+   {
+     "recipients": ["email1@example.com", "email2@example.com", "email3@example.com"]
+   }
+   ```
 6. Edit the `options` object's text property to reflect your own message:
-    ```js
-    // email options for each recipient
-     const options = {
-      from: process.env.EMAIL_USER,
-      subject: subject,
-      text: `New Circumference music! ${dropboxLink}`,
+   ```js
+   // email options for each recipient
+   const options = {
+     from: process.env.EMAIL_USER,
+     subject: subject,
+     text: `<your message here> ${dropboxLink}`,
    };
-    ```
-
+   ```
 
 ## Usage
 
 To send an email promo with a Dropbox link:
 
 1. Run the script with the desired Dropbox link:
-    ```bash
-    npx ts-node src/sendPromo.ts "https://www.dropbox.com/example" "New music!"
-    ```
+   ```bash
+   npx ts-node src/sendPromo.ts "https://www.dropbox.com/example" "New music!"
+   ```
 
 This will send an email to each recipient listed in `recipients.json` with the specified Dropbox link.
 
