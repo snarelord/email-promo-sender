@@ -27,7 +27,7 @@ const options = {
 };
 
 // send email to each recipient
-async function sendEmails() {
+export async function sendEmails() {
   for (const recipient of recipients) {
     try {
       const info = await transporter.sendMail({ ...options, to: recipient });

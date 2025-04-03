@@ -7,7 +7,7 @@
     "send-promo": "./dist/sendPromo.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "build": "tsc"
   },
   "repository": {
