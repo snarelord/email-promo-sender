@@ -34,20 +34,34 @@ A Node.js application to email music promo to DJs. The app reads email addresses
    npm install
    ```
 
-4. Create a `.env` file in the root of the project directory and add your Gmail credentials:
+4. Build the files:
+
+   ```bash
+   npm run build
+   ```
+
+5. Link the package globally so it can be run from anywhere:
+
+   ```bash
+   npm link
+   ```
+
+6. Create a `.env` file in the root of the project directory and add your Gmail credentials:
 
    ```env
    EMAIL_USER=your-email@gmail.com
    EMAIL_PASS=your-app-password
    ```
 
-5. Create a `recipients.json` file in the root directory with a list of email addresses:
+7. Create a `recipients.json` file in the root directory with a list of email addresses:
+
    ```json
    {
      "recipients": ["email1@example.com", "email2@example.com", "email3@example.com"]
    }
    ```
-6. Edit the `options` object's text property to reflect your own message:
+
+8. Edit the `options` object's text property to reflect your own message:
    ```js
    // email options for each recipient
    const options = {
@@ -59,11 +73,11 @@ A Node.js application to email music promo to DJs. The app reads email addresses
 
 ## Usage
 
-To send an email promo with a Dropbox link:
+To send an email promo with a Dropbox link use the following command anywhere on your system:
 
 1. Run the script with the desired Dropbox link:
    ```bash
-   npx ts-node src/sendPromo.ts "https://www.dropbox.com/example" "New music!"
+   send-promo "https://www.dropbox.com/example" "New music!"
    ```
 
 This will send an email to each recipient listed in `recipients.json` with the specified Dropbox link.
