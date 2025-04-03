@@ -1,6 +1,6 @@
 # Email Promo Sender
 
-A Node.js application to email music promo to DJs. The app reads email addresses from a `recipients.json` file and sends an email to each recipient with a specified link to music hosted on Dropbox. This was created to make my life easier.
+A Node.js application to email music promo to DJs. The program reads email addresses from a `recipients.json` file and sends an email to each recipient with a specified link to music hosted on Dropbox. This was created to make my life easier.
 
 ## Features
 
