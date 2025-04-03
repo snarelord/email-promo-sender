@@ -1,3 +1,4 @@
 .env
 recipients.json
 node_modules
+dist
