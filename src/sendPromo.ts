@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
 import * as fs from "fs";

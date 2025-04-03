@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A simple node application to send music promo to DJ's. Creating to make my life easier.",
   "main": "index.js",
+  "bin": {
+    "send-promo": "./dist/sendPromo.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
