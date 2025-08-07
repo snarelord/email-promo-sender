@@ -77,7 +77,7 @@ To send an email promo with a Dropbox link use the following command anywhere on
 
 1. Run the script with the desired Dropbox link:
    ```bash
-   send-promo "https://www.dropbox.com/example" "New music!"
+   send-promo "https://www.dropbox.com/example" "New music!" etc
    ```
 
 This will send an email to each recipient listed in `recipients.json` with the specified Dropbox link.
