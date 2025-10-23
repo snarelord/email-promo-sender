@@ -75,9 +75,9 @@ A Node.js CLI application to email music promo to DJs. The program reads email a
 
 To send an email promo with a Dropbox link use the following command anywhere on your system:
 
-1. Run the script with the desired Dropbox link:
+1. Run the script with the desired Dropbox link and text:
    ```bash
-   send-promo "https://www.dropbox.com/example" "New music!" etc
+   send-promo "https://www.dropbox.com/example" "New music!"
    ```
 
 This will send an email to each recipient listed in `recipients.json` with the specified Dropbox link.
