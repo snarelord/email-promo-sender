@@ -6,9 +6,6 @@ import * as fs from "fs";
 
 dotenv.config();
 
-// load recipients and parse
-const recipients = JSON.parse(fs.readFileSync("recipients.json", "utf-8")).recipients;
-
 // create transporter with SMTP settings
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -28,14 +25,21 @@ const options = {
 
 // send email to each recipient
 export async function sendEmails() {
-  for (const recipient of recipients) {
-    try {
+  let currentRecipient = "unknown";
+  try {
+    // load recipients and parse
+    const recipients = JSON.parse(fs.readFileSync("recipients.json", "utf-8")).recipients;
+    for (const recipient of recipients) {
+      currentRecipient = recipient; // track current recipient
       const info = await transporter.sendMail({ ...options, to: recipient });
       console.log(`Email sent to ${recipient}: ${info.response}`);
-    } catch (error) {
-      console.error(`Error sending email to ${recipient}:`, error);
     }
+  } catch (error) {
+    console.error(`Error sending email to ${currentRecipient}:`, error);
   }
 }
 
-sendEmails();
+// only run when the file is executed directly (from command line, not when imported in tests)
+if (require.main === module) {
+  sendEmails();
+}
