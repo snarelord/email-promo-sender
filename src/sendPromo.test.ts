@@ -101,9 +101,9 @@ describe("sendPromo.ts", () => {
     });
   });
 
-  // test("should use default subject if none is provided", async () => {
-  //   process.argv = ["node", "sendPromo.ts", "https://dropbox.com/test"];
-  //   await sendEmails();
-  //   expect(sendMailMock).toHaveBeenCalledWith(expect.objectContaining({ subject: "New music!" }));
-  // });
+  test("should use default subject if none is provided", async () => {
+    process.argv = ["node", "sendPromo.ts", "https://dropbox.com/test"];
+    await sendEmails();
+    expect(sendMailMock).toHaveBeenCalledWith(expect.objectContaining({ subject: "New music!" }));
+  });
 });
