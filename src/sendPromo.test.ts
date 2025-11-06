@@ -29,6 +29,38 @@ describe("sendPromo.ts", () => {
     process.env.EMAIL_USER = "test@sender.com";
   });
 
+  test("should correctly process command line arguments", async () => {
+    process.argv = ["node", "sendPromo.ts", "Check out my new track", "https://dropbox.com/my-music"];
+
+    await sendEmails();
+
+    expect(sendMailMock).toHaveBeenCalled();
+    const emailData = sendMailMock.mock.calls[0][0];
+    expect(emailData.text).toBe("Check out my new track: https://dropbox.com/my-music");
+  });
+
+  test("should return early when text argument is missing", async () => {
+    const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+    process.argv = ["node", "sendPromo.ts"]; // No arguments
+
+    await sendEmails();
+
+    expect(consoleSpy).toHaveBeenCalledWith("Missing text or link!");
+    expect(sendMailMock).not.toHaveBeenCalled();
+    consoleSpy.mockRestore();
+  });
+
+  test("should return early when dropbox link argument is missing", async () => {
+    const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+    process.argv = ["node", "sendPromo.ts", "Some text"]; // Only text, no link
+
+    await sendEmails();
+
+    expect(consoleSpy).toHaveBeenCalledWith("Missing text or link!");
+    expect(sendMailMock).not.toHaveBeenCalled();
+    consoleSpy.mockRestore();
+  });
+
   test("should read recipients from recipients.json", async () => {
     await sendEmails();
     expect(fs.readFileSync).toHaveBeenCalledWith("recipients.json", "utf-8");
@@ -99,11 +131,5 @@ describe("sendPromo.ts", () => {
       expect(emailData.from).toMatch(/@/);
       expect(emailData.from).toBeTruthy();
     });
-  });
-
-  test("should use default subject if none is provided", async () => {
-    process.argv = ["node", "sendPromo.ts", "https://dropbox.com/test"];
-    await sendEmails();
-    expect(sendMailMock).toHaveBeenCalledWith(expect.objectContaining({ subject: "New music!" }));
   });
 });
